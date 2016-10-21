@@ -1,6 +1,8 @@
 function getWeather() {
     if(req.readyState === XMLHttpRequest.DONE && req.status === 200) {
-        console.log(req.responseText);
+        var weatherData = JSON.parse(req.responseText);
+        city = weatherData.name;
+        temperature = weatherData.main.temp;
     }
 }
 
