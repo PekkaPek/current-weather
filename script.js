@@ -1,10 +1,11 @@
 function ajax(endPoint, callback) {
+    if (typeof callback !== 'function') {
+        throw new Error('Callback provided is not a function');
+    }
     var req = new XMLHttpRequest();
     req.addEventListener('readystatechange', function() {    
         if (req.readyState === XMLHttpRequest.DONE && req.status === 200) {
-            if (typeof callback === 'function') {
-                callback(JSON.parse(req.responseText));
-            }
+           callback(JSON.parse(req.responseText));
         }
     });
     req.open('GET', endPoint);
