@@ -1,7 +1,9 @@
 function getWeather(callback) {
     if(req.readyState === XMLHttpRequest.DONE && req.status === 200) {
         var weatherData = JSON.parse(req.responseText);
-        callback(weatherData);
+        if (typeof callback === 'function') {
+            callback(weatherData);
+        }
     }
 }
 
