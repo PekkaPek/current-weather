@@ -1,3 +1,14 @@
+var searchButton = document.getElementById('searchButton');
+var cityField = document.getElementById('cityField');
+var searchedCity;
+
+searchButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    searchedCity = cityField.value;
+    cityField.value = '';
+    console.log(searchedCity);
+})
+
 function ajax(endPoint, callback) {
     if (typeof callback !== 'function') {
         throw new Error('Callback provided is not a function');
