@@ -1,7 +1,3 @@
-var searchForm = document.getElementById('searchForm');
-var cityField = document.getElementById('cityField');
-var searchedCity;
-
 function ajax(endPoint, callback) {
     if (typeof callback !== 'function') {
         throw new Error('Callback provided is not a function');
@@ -24,6 +20,9 @@ function printData(searchedCity) {
 }
 
 searchForm.addEventListener('submit', function(e) {
+    var searchForm = document.getElementById('searchForm');
+    var cityField = document.getElementById('cityField');
+    var searchedCity;
     e.preventDefault();
     searchedCity = cityField.value;
     cityField.value = '';
