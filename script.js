@@ -1,4 +1,4 @@
-var searchButton = document.getElementById('searchButton');
+var searchForm = document.getElementById('searchForm');
 var cityField = document.getElementById('cityField');
 var searchedCity;
 
@@ -23,7 +23,7 @@ function printData(searchedCity) {
     });
 }
 
-searchButton.addEventListener('click', function(e) {
+searchForm.addEventListener('submit', function(e) {
     e.preventDefault();
     searchedCity = cityField.value;
     cityField.value = '';
