@@ -14,8 +14,8 @@ function ajax(endPoint, callback) {
 
 function printData(searchedCity) {
     ajax('http://api.openweathermap.org/data/2.5/weather?q=' + searchedCity + '&units=metric&appid=' + apikey, function(weatherData) {
-        console.log(weatherData.name);
-        console.log(weatherData.main.temp);
+        document.getElementById('searchedCity').innerHTML = weatherData.name;
+        document.getElementById('searchedCityTemperature').innerHTML = weatherData.main.temp;
     });
 }
 
