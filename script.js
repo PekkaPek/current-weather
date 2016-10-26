@@ -27,4 +27,4 @@ searchForm.addEventListener('submit', function(e) {
     searchedCity = cityField.value;
     cityField.value = '';
     printData(searchedCity);
-})
+});
