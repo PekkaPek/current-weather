@@ -3,7 +3,7 @@ function ajax(endPoint, callback) {
         throw new Error('Callback provided is not a function');
     }
     var req = new XMLHttpRequest();
-    req.addEventListener('readystatechange', function() {
+    req.addEventListener('readystatechange', function () {
         if (req.readyState === XMLHttpRequest.DONE && req.status === 200) {
            callback(JSON.parse(req.responseText));
         }
@@ -14,14 +14,14 @@ function ajax(endPoint, callback) {
 
 function printData(searchedCity) {
     document.getElementById('searchedCity').innerHTML = 'Loading';
-    ajax('http://api.openweathermap.org/data/2.5/weather?q=' + searchedCity + '&units=metric&appid=' + apikey, function(weatherData) {
+    ajax('http://api.openweathermap.org/data/2.5/weather?q=' + searchedCity + '&units=metric&appid=' + apikey, function (weatherData) {
         document.getElementById('searchedCity').innerHTML = weatherData.name;
         document.getElementById('searchedCityTemperature').innerHTML = Math.round(weatherData.main.temp);
         document.getElementById('weatherIcon').setAttribute('src', 'http://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png');
     });
 }
 
-searchForm.addEventListener('submit', function(e) {
+searchForm.addEventListener('submit', function (e) {
     e.preventDefault();
     var searchForm = document.getElementById('searchForm');
     var cityField = document.getElementById('cityField');
