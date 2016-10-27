@@ -5,7 +5,7 @@ function ajax(endPoint, callback) {
     var req = new XMLHttpRequest();
     req.addEventListener('readystatechange', function () {
         if (req.readyState === XMLHttpRequest.DONE && req.status === 200) {
-           callback(JSON.parse(req.responseText));
+            callback(JSON.parse(req.responseText));
         }
     });
     req.open('GET', endPoint);
