@@ -28,7 +28,9 @@ function printData(searchedCity) {
 getElem('searchForm').addEventListener('submit', function (e) {
     e.preventDefault();
     var cityField = getElem('cityField');
-    var searchedCity = cityField.value;
+    var searchedCity = cityField.value.trim();
     cityField.value = '';
-    printData(searchedCity);
+    if (searchedCity) {
+        printData(searchedCity);
+    }
 });
