@@ -21,9 +21,8 @@ function printData(searchedCity) {
     });
 }
 
-searchForm.addEventListener('submit', function (e) {
+document.getElementById('searchForm').addEventListener('submit', function (e) {
     e.preventDefault();
-    var searchForm = document.getElementById('searchForm');
     var cityField = document.getElementById('cityField');
     var searchedCity = cityField.value;
     cityField.value = '';
