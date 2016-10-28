@@ -1,3 +1,7 @@
+function getElem(id) {
+    return document.getElementById(id);
+}
+
 function ajax(endPoint, callback) {
     if (typeof callback !== 'function') {
         throw new Error('Callback provided is not a function');
@@ -13,17 +17,17 @@ function ajax(endPoint, callback) {
 }
 
 function printData(searchedCity) {
-    document.getElementById('searchedCity').innerHTML = 'Loading';
+    getElem('searchedCity').innerHTML = 'Loading';
     ajax('http://api.openweathermap.org/data/2.5/weather?q=' + searchedCity + '&units=metric&appid=' + apikey, function (weatherData) {
-        document.getElementById('searchedCity').innerHTML = weatherData.name;
-        document.getElementById('searchedCityTemperature').innerHTML = Math.round(weatherData.main.temp);
-        document.getElementById('weatherIcon').setAttribute('src', 'http://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png');
+        getElem('searchedCity').innerHTML = weatherData.name;
+        getElem('searchedCityTemperature').innerHTML = Math.round(weatherData.main.temp);
+        getElem('weatherIcon').setAttribute('src', 'http://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png');
     });
 }
 
-document.getElementById('searchForm').addEventListener('submit', function (e) {
+getElem('searchForm').addEventListener('submit', function (e) {
     e.preventDefault();
-    var cityField = document.getElementById('cityField');
+    var cityField = getElem('cityField');
     var searchedCity = cityField.value;
     cityField.value = '';
     printData(searchedCity);
