@@ -4,5 +4,17 @@
         "react",
         "jsx-a11y",
         "import"
-    ]
+    ],
+    "env": {
+      "browser": true  
+    },
+    "globals": {
+        "apikey": true
+    },
+    "rules": {
+        "no-var": "off",
+        "prefer-arrow-callback": "off",
+        "func-names": "off",
+        "prefer-template": "off"
+    }
 }
