@@ -3,10 +3,10 @@ function getElem(id) {
 }
 
 function ajax(endPoint, callback) {
+  var req = new XMLHttpRequest();
   if (typeof callback !== 'function') {
     throw new Error('Callback provided is not a function');
   }
-  var req = new XMLHttpRequest();
   req.addEventListener('readystatechange', function () {
     if (req.readyState === XMLHttpRequest.DONE && req.status === 200) {
       callback(JSON.parse(req.responseText));
@@ -26,9 +26,9 @@ function printData(searchedCity) {
 }
 
 getElem('searchForm').addEventListener('submit', function (e) {
-  e.preventDefault();
   var cityField = getElem('cityField');
   var searchedCity = cityField.value.trim();
+  e.preventDefault();
   cityField.value = '';
   if (searchedCity) {
     printData(searchedCity);
