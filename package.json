@@ -1,0 +1,22 @@
+{
+  "name": "current-weather",
+  "version": "1.0.0",
+  "description": "Shows current weather of user specified city.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PekkaPek/current-weather.git"
+  },
+  "keywords": [
+    "weather"
+  ],
+  "author": "Pekka Pekkonen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PekkaPek/current-weather/issues"
+  },
+  "homepage": "https://github.com/PekkaPek/current-weather#readme"
+}
