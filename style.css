@@ -14,3 +14,11 @@
   padding: 6px 0;
   float: left;
 }
+
+.data-wrapper {
+  border: 1px solid black;
+}
+
+.data-wrapper:last-of-type {
+  border-left: none; 
+}
