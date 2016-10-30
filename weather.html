@@ -7,14 +7,16 @@
 </head>
 
 <body>
-    <form id="searchForm">
-        <input id="cityField" type="text" placeholder="City"/>
-        <input type="submit" value="search" />
-    </form>
-    <div>
-        <img src="resources/placeholder-image.png" alt="Current weather icon" id="weatherIcon" />
-        <div id="searchedCity"></div>
-        <div id="searchedCityTemperature"></div>
+    <div id="container">
+        <form id="searchForm">
+            <input id="cityField" type="text" placeholder="City"/>
+            <input type="submit" value="search" />
+        </form>
+        <div>
+            <img src="resources/placeholder-image.png" alt="Current weather icon" id="weatherIcon" />
+            <div id="searchedCity"></div>
+            <div id="searchedCityTemperature"></div>
+        </div>
     </div>
     <script src="apikey.js"></script>
     <script src="script.js"></script>
