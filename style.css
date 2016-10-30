@@ -3,13 +3,13 @@
   margin: auto;
 }
 
-#image-wrapper {
+#image-data-wrapper {
   width: 50px;
   height: 50px;
   float: left;
 }
 
-#textual-data-wrapper {
+#text-data-wrapper {
   width: 150px;
   padding: 6px 0;
   float: left;
