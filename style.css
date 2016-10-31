@@ -24,10 +24,11 @@ input[type=submit] {
   padding: 3px 6px;
 }
 
-.data-section {
+#dataSection {
   display: flex;
   align-items: center;
   border: 1px solid black;
+  visibility: hidden;
 }
 
 #weatherIcon {

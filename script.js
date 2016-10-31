@@ -31,6 +31,7 @@ getElem('searchForm').addEventListener('submit', function (e) {
   e.preventDefault();
   cityField.value = '';
   if (searchedCity) {
+    getElem('dataSection').style.visibility = 'visible';
     printData(searchedCity);
   }
 });
