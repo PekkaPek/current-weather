@@ -3,22 +3,16 @@
   margin: auto;
 }
 
-#image-data-wrapper {
-  width: 50px;
-  height: 50px;
-  float: left;
-}
-
-#text-data-wrapper {
-  width: 150px;
-  padding: 6px 0;
-  float: left;
-}
-
-.data-wrapper {
+.data-section {
+  display: flex;
+  align-items: center;
   border: 1px solid black;
 }
 
-.data-wrapper:last-of-type {
-  border-left: none; 
+#weatherIcon {
+  border-right: 1px solid black;
+}
+
+#text-data-wrapper {
+  padding-left: 10px; 
 }
