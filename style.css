@@ -3,6 +3,10 @@
   margin: auto;
 }
 
+input[type=text] {
+  width: 239px;
+}
+
 input[type=submit] {
   position: absolute;
   color: white;
