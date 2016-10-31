@@ -3,6 +3,14 @@
   margin: auto;
 }
 
+input[type=submit] {
+  position: absolute;
+  color: white;
+  background-color: cornflowerblue;
+  border: none;
+  padding: 3px 6px;
+}
+
 .data-section {
   display: flex;
   align-items: center;
