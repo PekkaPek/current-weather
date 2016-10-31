@@ -3,6 +3,10 @@
   margin: auto;
 }
 
+#searchForm {
+  margin-bottom: 15px;
+}
+
 input[type=text] {
   width: 239px;
 }
