@@ -2,14 +2,20 @@ function getElem(id) {
   return document.getElementById(id);
 }
 
-function ajax(endPoint, callback) {
+function ajax(endPoint, callback, errorCallback) {
   var req = new XMLHttpRequest();
   if (typeof callback !== 'function') {
     throw new Error('Callback provided is not a function');
   }
   req.addEventListener('readystatechange', function () {
-    if (req.readyState === XMLHttpRequest.DONE && req.status === 200) {
-      callback(JSON.parse(req.responseText));
+    if (req.readyState === XMLHttpRequest.DONE ) {
+      if (req.status === 200) {
+        callback(JSON.parse(req.responseText));
+      } else if (req.status >= 400 && req.status <= 599) {
+        if (typeof errorCallback === 'function') {
+          errorCallback();
+        }
+      }
     }
   });
   req.open('GET', endPoint);
@@ -25,6 +31,8 @@ function printData(searchedCity) {
     getElem('searchedCity').innerHTML = weatherData.name;
     getElem('searchedCityTemperature').innerHTML = Math.round(weatherData.main.temp) + ' &deg;C';
     getElem('weatherIcon').setAttribute('src', 'http://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png');
+  }, function () {
+    getElem('searchedCity').innerHTML = 'Could not fetch data';
   });
 }
 
