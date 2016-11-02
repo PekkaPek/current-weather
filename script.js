@@ -33,6 +33,7 @@ function printData(searchedCity) {
     getElem('weatherIcon').setAttribute('src', 'http://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png');
   }, function () {
     getElem('searchedCity').innerHTML = 'Could not fetch data';
+    getElem('dataSection').setAttribute('class', 'error');
   });
 }
 
@@ -40,6 +41,7 @@ getElem('searchForm').addEventListener('submit', function (e) {
   var cityField = getElem('cityField');
   var searchedCity = cityField.value.trim();
   e.preventDefault();
+  getElem('dataSection').removeAttribute('class');
   if (searchedCity) {
     getElem('dataSection').style.visibility = 'visible';
     printData(searchedCity);

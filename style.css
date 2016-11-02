@@ -40,3 +40,7 @@ input[type=submit] {
 #text-data-wrapper {
   padding-left: 10px; 
 }
+
+.error {
+  background: MistyRose;
+}
