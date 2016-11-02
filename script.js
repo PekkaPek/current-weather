@@ -38,8 +38,7 @@ function printData(searchedCity) {
 }
 
 getElem('searchForm').addEventListener('submit', function (e) {
-  var cityField = getElem('cityField');
-  var searchedCity = cityField.value.trim();
+  var searchedCity = getElem('cityField').value.trim();
   e.preventDefault();
   getElem('dataSection').removeAttribute('class');
   if (searchedCity) {
