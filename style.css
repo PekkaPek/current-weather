@@ -8,6 +8,10 @@ h1 {
   letter-spacing: 2.2px;
 }
 
+:not(h1) {
+  font-family: "Open Sans", sans-serif;
+}
+
 #formSection {
   display: flex;
 }
