@@ -13,7 +13,7 @@ function ajax(endPoint, callback, errorCallback) {
         callback(JSON.parse(req.responseText));
       } else if (req.status >= 400 && req.status <= 599) {
         if (typeof errorCallback === 'function') {
-          errorCallback();
+          errorCallback(JSON.parse(req.responseText));
         }
       }
     }
@@ -31,8 +31,8 @@ function printData(searchedCity) {
     getElem('searchedCity').innerHTML = weatherData.name;
     getElem('searchedCityTemperature').innerHTML = Math.round(weatherData.main.temp) + ' &deg;C';
     getElem('weatherIcon').setAttribute('src', 'http://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png');
-  }, function () {
-    getElem('searchedCity').innerHTML = 'Could not fetch data';
+  }, function (error) {
+    getElem('searchedCity').innerHTML = 'Could not fetch data (' + error.message + ')';
     getElem('dataSection').setAttribute('class', 'error');
   });
 }
