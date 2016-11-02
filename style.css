@@ -1,15 +1,18 @@
 #container {
-  max-width: 300px;
+  max-width: 500px;
   margin: auto;
 }
 
 h1 {
   font-family: "Merriweather Sans", sans-serif;
+  font-size: 50px;
+  text-align: center;
   letter-spacing: 2.2px;
 }
 
 :not(h1) {
   font-family: "Open Sans", sans-serif;
+  font-size: 25px;
 }
 
 #formSection {
@@ -39,6 +42,10 @@ input[type=submit] {
 
 #weatherIcon {
   border-right: 1px solid black;
+}
+
+img {
+  width: 75px;
 }
 
 #text-data-wrapper {
