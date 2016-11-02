@@ -8,20 +8,22 @@ h1 {
   letter-spacing: 3.3px;
 }
 
+#formSection {
+  display: flex;
+}
+
 #searchForm {
   margin-bottom: 15px;
 }
 
 input[type=text] {
-  width: 239px;
+  flex: 1;
 }
 
 input[type=submit] {
-  position: absolute;
   color: white;
   background-color: cornflowerblue;
   border: none;
-  padding: 3px 6px;
 }
 
 #dataSection {
