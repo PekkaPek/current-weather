@@ -1,3 +1,8 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 25px;
+}
+
 #container {
   max-width: 500px;
   margin: auto;
@@ -10,11 +15,6 @@ h1 {
   letter-spacing: 2.2px;
 }
 
-:not(h1) {
-  font-family: "Open Sans", sans-serif;
-  font-size: 25px;
-}
-
 #formSection {
   display: flex;
 }
@@ -24,10 +24,12 @@ h1 {
 }
 
 input[type=text] {
+  font-size: 25px;
   flex: 1;
 }
 
 input[type=submit] {
+  font-size: 25px;
   color: white;
   background-color: cornflowerblue;
   border: none;
