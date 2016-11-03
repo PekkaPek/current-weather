@@ -12,4 +12,4 @@ var apikey = 'insert your API key here';
 API key is used to get actual weather forecasts. If you don't have one already, consult http://openweathermap.org/appid.
 
 ## Access
-Open project's weather.html file in your browser.
+Open project's index.html file in your browser.
