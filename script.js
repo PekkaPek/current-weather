@@ -30,7 +30,7 @@ function printData(searchedCity) {
     getElem('cityField').value = '';
     getElem('searchedCity').innerHTML = weatherData.name;
     getElem('searchedCityTemperature').innerHTML = Math.round(weatherData.main.temp) + ' &deg;C';
-    getElem('weatherIcon').setAttribute('src', 'http://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png');
+    getElem('weatherIcon').setAttribute('src', 'https://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png');
   }, function (error) {
     getElem('searchedCity').innerHTML = 'Could not fetch data (' + error.message + ')';
     getElem('dataSection').setAttribute('class', 'error');
