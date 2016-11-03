@@ -5,7 +5,7 @@ Shows current weather for any searched city.
 * Clone this repository
 * Create new file "apikey.js" to the root of project and add following line:
 ```javascript
-var apikey = '[insert your API key here]';
+var apikey = 'insert your API key here';
 ```
 
 ### API key
