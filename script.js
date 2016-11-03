@@ -26,7 +26,7 @@ function printData(searchedCity) {
   getElem('searchedCity').innerHTML = 'Loading';
   getElem('searchedCityTemperature').innerHTML = '';
   getElem('weatherIcon').setAttribute('src', 'resources/placeholder-image.png');
-  ajax('http://api.openweathermap.org/data/2.5/weather?q=' + searchedCity + '&units=metric&appid=' + apikey, function (weatherData) {
+  ajax('https://api.openweathermap.org/data/2.5/weather?q=' + searchedCity + '&units=metric&appid=' + apikey, function (weatherData) {
     getElem('cityField').value = '';
     getElem('searchedCity').innerHTML = weatherData.name;
     getElem('searchedCityTemperature').innerHTML = Math.round(weatherData.main.temp) + ' &deg;C';
