@@ -38,7 +38,23 @@ function printData(searchedCity) {
           return area.name !== weatherData.name;
         })
         .forEach(function (area) {
-          getElem('nearbyAreasData').innerHTML += area.name + ' ' + area.weather[0].icon + ' ' + Math.round(area.main.temp) + '&deg;C<br />';
+          var li = document.createElement('li');
+          var img = document.createElement('img');
+          var parentDiv = document.createElement('div');
+          var areaDiv = document.createElement('div');
+          var temperatureDiv = document.createElement('div');
+          areaDiv.appendChild(document.createTextNode(area.name));
+          temperatureDiv.appendChild(document.createTextNode(Math.round(area.main.temp)));
+          parentDiv.appendChild(areaDiv);
+          parentDiv.appendChild(temperatureDiv);
+          li.appendChild(img);
+          li.appendChild(parentDiv);
+          li.className = 'nearbyArea';
+          img.className = 'smallIcon';
+          img.setAttribute('src', 'http://openweathermap.org/img/w/' + area.weather[0].icon + '.png');
+          img.setAttribute('alt', 'Weather icon symbolizing ' + area.weather[0].description);
+          parentDiv.className = 'nearbyAreaData';
+          getElem('nearbyAreasData').appendChild(li);
         });
     }, function (error) {
       getElem('searchedCity').innerHTML += 'Error loading ares.json (' + error + ')';

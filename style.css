@@ -47,12 +47,31 @@ input[type=submit] {
   border-right: 1px solid black;
 }
 
-img {
+#dataSection img {
   width: 75px;
 }
 
 #text-data-wrapper {
   padding-left: 10px; 
+}
+
+#nearbyAreasData {
+  padding-left: 0;
+}
+
+.nearbyArea {
+  display: flex;
+  border: 1px solid black;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.smallIcon {
+  border-right: 1px solid black;
+}
+
+.nearbyAreaData {
+  padding-left: 10px;
 }
 
 .error {
