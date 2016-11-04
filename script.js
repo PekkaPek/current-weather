@@ -33,9 +33,13 @@ function printData(searchedCity) {
     getElem('weatherIcon').setAttribute('src', 'http://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png');
     ajax('http://api.openweathermap.org/data/2.5/find?lat=' + weatherData.coord.lat + '&lon=' + weatherData.coord.lon + '&cnt=10&units=metric&appid=' + apikey, function (areaData) {
       getElem('nearbyAreasData').innerHTML = '';
-      areaData.list.forEach(function (area) {
-        getElem('nearbyAreasData').innerHTML += area.name + ' ' + area.weather[0].icon + ' ' + Math.round(area.main.temp) + '&deg;C<br />';
-      });
+      areaData.list
+        .filter(function (area) {
+          return area.name !== weatherData.name;
+        })
+        .forEach(function (area) {
+          getElem('nearbyAreasData').innerHTML += area.name + ' ' + area.weather[0].icon + ' ' + Math.round(area.main.temp) + '&deg;C<br />';
+        });
     }, function (error) {
       getElem('searchedCity').innerHTML += 'Error loading ares.json (' + error + ')';
     });
