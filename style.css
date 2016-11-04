@@ -15,6 +15,7 @@ h1 {
   letter-spacing: 2.2px;
 }
 
+/*** Search Section ***/
 #formSection {
   display: flex;
 }
@@ -36,6 +37,7 @@ input[type=submit] {
   border: none;
 }
 
+/*** Area Section ***/
 #dataSection {
   display: flex;
   align-items: center;
@@ -55,6 +57,7 @@ input[type=submit] {
   padding-left: 10px; 
 }
 
+/*** Nearby Areas Section ***/
 #nearbyAreasData {
   padding-left: 0;
 }
