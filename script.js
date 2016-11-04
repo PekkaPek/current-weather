@@ -23,6 +23,8 @@ function ajax(endPoint, callback, errorCallback) {
 }
 
 function printData(searchedCity) {
+  var areaLat;
+  var areaLon;
   getElem('searchedCity').innerHTML = 'Loading';
   getElem('searchedCityTemperature').innerHTML = '';
   getElem('weatherIcon').setAttribute('src', 'resources/placeholder-image.png');
@@ -31,6 +33,22 @@ function printData(searchedCity) {
     getElem('searchedCity').innerHTML = weatherData.name;
     getElem('searchedCityTemperature').innerHTML = Math.round(weatherData.main.temp) + ' &deg;C';
     getElem('weatherIcon').setAttribute('src', 'http://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png');
+    ajax('http://localhost:8888/areas.json', function (cityData) {
+      cityData.areas.forEach(function (area) {
+        if (area.name === weatherData.name) {
+          areaLat = area.coord.lat;
+          areaLon = area.coord.lon;
+        }
+      });
+      ajax('http://api.openweathermap.org/data/2.5/find?lat=' + areaLat + '&lon=' + areaLon + '&cnt=10&units=metric&appid=' + apikey, function (areaData) {
+        getElem('nearbyAreasData').innerHTML = '';
+        areaData.list.forEach(function (area) {
+          getElem('nearbyAreasData').innerHTML += area.name + ' ' + area.weather[0].icon + ' ' + Math.round(area.main.temp) + '&deg;C<br />';
+        });
+      });
+    }, function (error) {
+      getElem('searchedCity').innerHTML += 'Error loading ares.json (' + error + ')';
+    });
   }, function (error) {
     getElem('searchedCity').innerHTML = 'Could not fetch data (' + error.message + ')';
     getElem('dataSection').setAttribute('class', 'error');
