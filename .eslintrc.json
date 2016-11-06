@@ -15,6 +15,7 @@
         "no-var": "off",
         "prefer-arrow-callback": "off",
         "func-names": "off",
-        "prefer-template": "off"
+        "prefer-template": "off",
+        "vars-on-top": "off"
     }
 }
