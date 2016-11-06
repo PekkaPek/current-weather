@@ -22,6 +22,24 @@ function ajax(endPoint, callback, errorCallback) {
   req.send();
 }
 
+function createElem(type, attributes, children) {
+  var element = document.createElement(type);
+  if (attributes && typeof attributes === 'object') {
+    Object.keys(attributes).forEach(function (attribute) {
+      var attributeValue = attributes[attribute];
+      element.setAttribute(attribute, attributeValue);
+    });
+  }
+  if (typeof children === 'string') {
+    element.appendChild(document.createTextNode(children));
+  } else if (Array.isArray(children)) {
+    children.forEach(function (child) {
+      element.appendChild(child);
+    });
+  }
+  return element;
+}
+
 function printData(searchedCity) {
   getElem('searchedCity').innerHTML = 'Loading';
   getElem('searchedCityTemperature').innerHTML = '';
@@ -40,22 +58,22 @@ function printData(searchedCity) {
           return area.name !== weatherData.name;
         })
         .forEach(function (area) {
-          var li = document.createElement('li');
-          var img = document.createElement('img');
-          var parentDiv = document.createElement('div');
-          var areaDiv = document.createElement('div');
-          var temperatureDiv = document.createElement('div');
-          areaDiv.appendChild(document.createTextNode(area.name));
-          temperatureDiv.appendChild(document.createTextNode(Math.round(area.main.temp)));
-          parentDiv.appendChild(areaDiv);
-          parentDiv.appendChild(temperatureDiv);
-          li.appendChild(img);
-          li.appendChild(parentDiv);
-          li.className = 'nearbyArea';
-          img.className = 'smallIcon';
-          img.setAttribute('src', 'http://openweathermap.org/img/w/' + area.weather[0].icon + '.png');
-          img.setAttribute('alt', 'Weather icon symbolizing ' + area.weather[0].description);
-          parentDiv.className = 'nearbyAreaData';
+          var li = createElem('li', {
+            class: 'nearbyArea',
+          }, [
+            createElem('img', {
+              class: 'smallIcon',
+              src: 'http://openweathermap.org/img/w/' + area.weather[0].icon + '.png',
+              alt: 'Weather icon symbolizing ' + area.weather[0].description,
+            }),
+            createElem('div', {
+              class: 'nearbyAreaData',
+            }, [
+              createElem('div', null, area.name),
+              createElem('div', null, Math.round(area.main.temp) + ' °C'),
+            ]),
+          ]);
+
           getElem('nearbyAreasData').appendChild(li);
         });
       document.getElementsByClassName('loading-section')[0].style.display = 'none';
