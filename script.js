@@ -26,6 +26,8 @@ function printData(searchedCity) {
   getElem('searchedCity').innerHTML = 'Loading';
   getElem('searchedCityTemperature').innerHTML = '';
   getElem('weatherIcon').setAttribute('src', 'resources/placeholder-image.png');
+  getElem('nearby-areas-section').style.visibility = 'hidden';
+  document.getElementsByClassName('loading-section')[0].style.visibility = 'visible';
   ajax('http://api.openweathermap.org/data/2.5/weather?q=' + searchedCity + '&units=metric&appid=' + apikey, function (weatherData) {
     getElem('cityField').value = '';
     getElem('searchedCity').innerHTML = weatherData.name;
@@ -56,6 +58,7 @@ function printData(searchedCity) {
           parentDiv.className = 'nearbyAreaData';
           getElem('nearbyAreasData').appendChild(li);
         });
+      document.getElementsByClassName('loading-section')[0].style.display = 'none';
       getElem('nearby-areas-section').style.visibility = 'visible';
     }, function (error) {
       getElem('searchedCity').innerHTML += 'Error loading ares.json (' + error + ')';
