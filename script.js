@@ -56,6 +56,7 @@ function printData(searchedCity) {
           parentDiv.className = 'nearbyAreaData';
           getElem('nearbyAreasData').appendChild(li);
         });
+      getElem('nearby-areas-section').style.visibility = 'visible';
     }, function (error) {
       getElem('searchedCity').innerHTML += 'Error loading ares.json (' + error + ')';
     });

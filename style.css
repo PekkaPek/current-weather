@@ -58,6 +58,10 @@ input[type=submit] {
 }
 
 /*** Nearby Areas Section ***/
+#nearby-areas-section {
+  visibility: hidden;
+}
+
 #nearbyAreasData {
   padding-left: 0;
 }
