@@ -48,18 +48,18 @@ function createElem(type, attributes, children) {
 }
 
 function printData(searchedCity) {
-  getElems('#searchedCity').innerHTML = 'Loading';
-  getElems('#searchedCityTemperature').innerHTML = '';
-  getElems('#weatherIcon').setAttribute('src', 'resources/placeholder-image.png');
+  getElems('#searched-city').innerHTML = 'Loading';
+  getElems('#searched-city-temperature').innerHTML = '';
+  getElems('#weather-icon').setAttribute('src', 'resources/placeholder-image.png');
   getElems('#nearby-areas-section').style.visibility = 'hidden';
   getElems('.loading-section')[0].style.visibility = 'visible';
   ajax('http://api.openweathermap.org/data/2.5/weather?q=' + searchedCity + '&units=metric&appid=' + apikey, function (weatherData) {
-    getElems('#cityField').value = '';
-    getElems('#searchedCity').innerHTML = weatherData.name;
-    getElems('#searchedCityTemperature').innerHTML = Math.round(weatherData.main.temp) + ' &deg;C';
-    getElems('#weatherIcon').setAttribute('src', 'http://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png');
+    getElems('#city-field').value = '';
+    getElems('#searched-city').innerHTML = weatherData.name;
+    getElems('#searched-city-temperature').innerHTML = Math.round(weatherData.main.temp) + ' &deg;C';
+    getElems('#weather-icon').setAttribute('src', 'http://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png');
     ajax('http://api.openweathermap.org/data/2.5/find?lat=' + weatherData.coord.lat + '&lon=' + weatherData.coord.lon + '&cnt=10&units=metric&appid=' + apikey, function (areaData) {
-      getElems('#nearbyAreasData').innerHTML = '';
+      getElems('#nearby-areas-data').innerHTML = '';
       areaData.list
         .filter(function (area) {
           return area.name !== weatherData.name;
@@ -81,25 +81,25 @@ function printData(searchedCity) {
             ]),
           ]);
 
-          getElems('#nearbyAreasData').appendChild(li);
+          getElems('#nearby-areas-data').appendChild(li);
         });
       getElems('.loading-section')[0].style.display = 'none';
       getElems('#nearby-areas-section').style.visibility = 'visible';
     }, function (error) {
-      getElems('#searchedCity').innerHTML += 'Error loading ares.json (' + error + ')';
+      getElems('#searched-city').innerHTML += 'Error loading ares.json (' + error + ')';
     });
   }, function (error) {
-    getElems('#searchedCity').innerHTML = 'Could not fetch data (' + error.message + ')';
-    getElems('#dataSection').setAttribute('class', 'error');
+    getElems('#searched-city').innerHTML = 'Could not fetch data (' + error.message + ')';
+    getElems('#data-section').setAttribute('class', 'error');
   });
 }
 
-getElems('#searchForm').addEventListener('submit', function (e) {
-  var searchedCity = getElems('#cityField').value.trim();
+getElems('#search-form').addEventListener('submit', function (e) {
+  var searchedCity = getElems('#city-field').value.trim();
   e.preventDefault();
-  getElems('#dataSection').removeAttribute('class');
+  getElems('#data-section').removeAttribute('class');
   if (searchedCity) {
-    getElems('#dataSection').style.visibility = 'visible';
+    getElems('#data-section').style.visibility = 'visible';
     printData(searchedCity);
   }
 });
