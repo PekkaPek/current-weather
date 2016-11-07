@@ -46,11 +46,8 @@ input[type=submit] {
 }
 
 #weatherIcon {
-  border-right: 1px solid black;
-}
-
-#dataSection img {
   width: 75px;
+  border-right: 1px solid black;
 }
 
 #text-data-wrapper {
