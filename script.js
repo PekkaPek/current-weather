@@ -1,5 +1,12 @@
-function getElem(id) {
-  return document.getElementById(id);
+function getElems(target) {
+  switch (target.charAt(0)) {
+    case '#':
+      return document.getElementById(target.substr(1));
+    case '.':
+      return document.getElementsByClassName(target.substr(1));
+    default:
+      return document.getElementsByTagName(target);
+  }
 }
 
 function ajax(endPoint, callback, errorCallback) {
@@ -41,18 +48,18 @@ function createElem(type, attributes, children) {
 }
 
 function printData(searchedCity) {
-  getElem('searchedCity').innerHTML = 'Loading';
-  getElem('searchedCityTemperature').innerHTML = '';
-  getElem('weatherIcon').setAttribute('src', 'resources/placeholder-image.png');
-  getElem('nearby-areas-section').style.visibility = 'hidden';
-  document.getElementsByClassName('loading-section')[0].style.visibility = 'visible';
+  getElems('#searchedCity').innerHTML = 'Loading';
+  getElems('#searchedCityTemperature').innerHTML = '';
+  getElems('#weatherIcon').setAttribute('src', 'resources/placeholder-image.png');
+  getElems('#nearby-areas-section').style.visibility = 'hidden';
+  getElems('.loading-section')[0].style.visibility = 'visible';
   ajax('http://api.openweathermap.org/data/2.5/weather?q=' + searchedCity + '&units=metric&appid=' + apikey, function (weatherData) {
-    getElem('cityField').value = '';
-    getElem('searchedCity').innerHTML = weatherData.name;
-    getElem('searchedCityTemperature').innerHTML = Math.round(weatherData.main.temp) + ' &deg;C';
-    getElem('weatherIcon').setAttribute('src', 'http://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png');
+    getElems('#cityField').value = '';
+    getElems('#searchedCity').innerHTML = weatherData.name;
+    getElems('#searchedCityTemperature').innerHTML = Math.round(weatherData.main.temp) + ' &deg;C';
+    getElems('#weatherIcon').setAttribute('src', 'http://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png');
     ajax('http://api.openweathermap.org/data/2.5/find?lat=' + weatherData.coord.lat + '&lon=' + weatherData.coord.lon + '&cnt=10&units=metric&appid=' + apikey, function (areaData) {
-      getElem('nearbyAreasData').innerHTML = '';
+      getElems('#nearbyAreasData').innerHTML = '';
       areaData.list
         .filter(function (area) {
           return area.name !== weatherData.name;
@@ -74,25 +81,25 @@ function printData(searchedCity) {
             ]),
           ]);
 
-          getElem('nearbyAreasData').appendChild(li);
+          getElems('#nearbyAreasData').appendChild(li);
         });
-      document.getElementsByClassName('loading-section')[0].style.display = 'none';
-      getElem('nearby-areas-section').style.visibility = 'visible';
+      getElems('.loading-section')[0].style.display = 'none';
+      getElems('#nearby-areas-section').style.visibility = 'visible';
     }, function (error) {
-      getElem('searchedCity').innerHTML += 'Error loading ares.json (' + error + ')';
+      getElems('#searchedCity').innerHTML += 'Error loading ares.json (' + error + ')';
     });
   }, function (error) {
-    getElem('searchedCity').innerHTML = 'Could not fetch data (' + error.message + ')';
-    getElem('dataSection').setAttribute('class', 'error');
+    getElems('#searchedCity').innerHTML = 'Could not fetch data (' + error.message + ')';
+    getElems('#dataSection').setAttribute('class', 'error');
   });
 }
 
-getElem('searchForm').addEventListener('submit', function (e) {
-  var searchedCity = getElem('cityField').value.trim();
+getElems('#searchForm').addEventListener('submit', function (e) {
+  var searchedCity = getElems('#cityField').value.trim();
   e.preventDefault();
-  getElem('dataSection').removeAttribute('class');
+  getElems('#dataSection').removeAttribute('class');
   if (searchedCity) {
-    getElem('dataSection').style.visibility = 'visible';
+    getElems('#dataSection').style.visibility = 'visible';
     printData(searchedCity);
   }
 });
