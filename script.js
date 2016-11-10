@@ -107,3 +107,11 @@ getElems('#search-form').addEventListener('submit', function (e) {
     printData(searchedCity);
   }
 });
+
+getElems('#data-section').addEventListener('click', function () {
+  if (document.defaultView.getComputedStyle(getElems('.extra-data')[0], null).getPropertyValue('display') === 'block') {
+    getElems('.extra-data')[0].style.display = 'none';
+  } else {
+    getElems('.extra-data')[0].style.display = 'block';
+  }
+});
