@@ -91,6 +91,7 @@ input[type=submit] {
 
 .nearby-area-extra {
   max-height: 0;
+  transition: max-height 2s;
 }
 
 .error {
