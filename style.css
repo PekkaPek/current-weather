@@ -58,10 +58,11 @@ input[type=submit] {
 
 .extra-data {
   max-height: 0;
+  transition: max-height 2s;
 }
 
 .verbose {
-  max-height: 300px;
+  max-height: 240px;
 }
 
 /*** Nearby Areas Section ***/
