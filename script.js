@@ -109,9 +109,5 @@ getElems('#search-form').addEventListener('submit', function (e) {
 });
 
 getElems('#data-section').addEventListener('click', function () {
-  if (document.defaultView.getComputedStyle(getElems('.extra-data')[0], null).getPropertyValue('display') === 'block') {
-    getElems('.extra-data')[0].style.display = 'none';
-  } else {
-    getElems('.extra-data')[0].style.display = 'block';
-  }
+  getElems('.extra-data')[0].classList.toggle('verbose');
 });
