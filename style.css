@@ -61,9 +61,6 @@ input[type=submit] {
   transition: max-height 2s;
 }
 
-.verbose {
-  max-height: 240px;
-}
 
 /*** Nearby Areas Section ***/
 #nearby-areas-section {
@@ -77,6 +74,7 @@ input[type=submit] {
 .nearbyArea {
   display: flex;
   flex-wrap: wrap;
+  overflow: hidden;
   border: 1px solid black;
   margin-bottom: 15px;
   font-size: 20px;
@@ -91,6 +89,16 @@ input[type=submit] {
   width: 70%;
 }
 
+.nearby-area-extra {
+  max-height: 0;
+}
+
 .error {
   background: MistyRose;
+}
+
+/*** Common to Several Sections ***/
+
+.verbose {
+  max-height: 240px;
 }
