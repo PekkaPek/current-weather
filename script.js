@@ -83,6 +83,12 @@ function printData(searchedCity) {
               createElem('div', null, area.name),
               createElem('div', null, Math.round(area.main.temp) + ' °C'),
             ]),
+            createElem('div', {
+              class: 'nearby-area-extra',
+            }, [
+              createElem('div', null, 'Wind ' + area.wind.speed + ' m/s'),
+              createElem('div', null, 'Humidity ' + area.main.humidity + ' %'),
+            ]),
           ]);
 
           getElems('#nearby-areas-data').appendChild(li);

@@ -76,6 +76,7 @@ input[type=submit] {
 
 .nearbyArea {
   display: flex;
+  flex-wrap: wrap;
   border: 1px solid black;
   margin-bottom: 15px;
   font-size: 20px;
@@ -87,6 +88,7 @@ input[type=submit] {
 
 .nearbyAreaData {
   padding-left: 10px;
+  width: 70%;
 }
 
 .error {
