@@ -47,6 +47,11 @@ function createElem(type, attributes, children) {
   return element;
 }
 
+function timestampToTime(timestamp) {
+  var date = new Date(timestamp * 1000);
+  return date.getHours() + ':' + date.getMinutes();
+}
+
 function addClickListeners() {
   var nearbyAreas = getElems('.nearbyArea');
   for (var i = 0; i < nearbyAreas.length; i++) {
@@ -69,8 +74,8 @@ function printData(searchedCity) {
     getElems('#weather-icon').setAttribute('src', 'http://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png');
     getElems('.wind-data')[0].innerHTML = 'Wind ' + weatherData.wind.speed + ' m/s';
     getElems('.humidity-data')[0].innerHTML = 'Humidity ' + weatherData.main.humidity + ' %';
-    getElems('.sunrise-data')[0].innerHTML = 'Sunrise ' + weatherData.sys.sunrise;
-    getElems('.sunset-data')[0].innerHTML = 'Sunset ' + weatherData.sys.sunset;
+    getElems('.sunrise-data')[0].innerHTML = 'Sunrise ' + timestampToTime(weatherData.sys.sunrise);
+    getElems('.sunset-data')[0].innerHTML = 'Sunset ' + timestampToTime(weatherData.sys.sunset);
     ajax('http://api.openweathermap.org/data/2.5/find?lat=' + weatherData.coord.lat + '&lon=' + weatherData.coord.lon + '&cnt=10&units=metric&appid=' + apikey, function (areaData) {
       getElems('#nearby-areas-data').innerHTML = '';
       areaData.list
