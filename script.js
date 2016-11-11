@@ -47,6 +47,15 @@ function createElem(type, attributes, children) {
   return element;
 }
 
+function addClickListeners() {
+  var nearbyAreas = getElems('.nearbyArea');
+  for (var i = 0; i < nearbyAreas.length; i++) {
+    nearbyAreas[i].addEventListener('click', function () {
+      this.children[2].classList.toggle('verbose');
+    });
+  }
+}
+
 function printData(searchedCity) {
   getElems('#searched-city').innerHTML = 'Loading';
   getElems('#searched-city-temperature').innerHTML = '';
@@ -95,6 +104,7 @@ function printData(searchedCity) {
         });
       getElems('.loading-section')[0].style.display = 'none';
       getElems('#nearby-areas-section').style.visibility = 'visible';
+      addClickListeners();
     }, function (error) {
       getElems('#searched-city').innerHTML += 'Error loading ares.json (' + error + ')';
     });
