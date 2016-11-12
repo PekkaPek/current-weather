@@ -54,11 +54,11 @@ function timestampToTime(timestamp) {
 
 function addClickListeners() {
   var nearbyAreas = getElems('.nearbyArea');
-  for (var i = 0; i < nearbyAreas.length; i++) {
-    nearbyAreas[i].addEventListener('click', function () {
+  Array.prototype.forEach.call(nearbyAreas, function (areaElement) {
+    areaElement.addEventListener('click', function () {
       this.children[2].classList.toggle('verbose');
     });
-  }
+  });
 }
 
 function printData(searchedCity) {
