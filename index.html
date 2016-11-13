@@ -9,19 +9,19 @@
 </head>
 
 <body>
-    <div id="container">
+    <div class="container">
         <h1>Current Weather</h1>
-        <form id="search-form">
-            <div id="form-section">
-                    <input id="city-field" type="text" placeholder="City" autofocus="autofocus"/>
+        <form class="search-form">
+            <div class="form-section">
+                    <input class="city-field" type="text" placeholder="City" autofocus="autofocus"/>
                     <input type="submit" value="search" />
             </div>
         </form>
-        <div id="data-section">
-            <img src="resources/placeholder-image.png" alt="Current weather icon" id="weather-icon" />
-            <div id="text-data-wrapper">
-                <div id="searched-city"></div>
-                <div id="searched-city-temperature"></div>
+        <div class="data-section">
+            <img src="resources/placeholder-image.png" alt="Current weather icon" class="weather-icon" />
+            <div class="text-data-wrapper">
+                <div class="searched-city"></div>
+                <div class="searched-city-temperature"></div>
             </div>
             <div class="extra-data">
                 <div class="wind-data"></div>
@@ -30,10 +30,10 @@
                 <div class="sunset-data"></div>
             </div>
         </div>
-        <div id="nearby-areas-section">
+        <div class="nearby-areas-section">
             <h4>Nearby Areas</h4>
             <div class="loading-section">Loading nearby areas</div>
-            <ul id="nearby-areas-data">
+            <ul class="nearby-areas-data">
             </ul>
         </div>
     </div>

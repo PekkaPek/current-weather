@@ -62,22 +62,22 @@ function addClickListeners() {
 }
 
 function printData(searchedCity) {
-  getElems('#searched-city').innerHTML = 'Loading';
-  getElems('#searched-city-temperature').innerHTML = '';
-  getElems('#weather-icon').setAttribute('src', 'resources/placeholder-image.png');
-  getElems('#nearby-areas-section').style.visibility = 'hidden';
+  getElems('.searched-city')[0].innerHTML = 'Loading';
+  getElems('.searched-city-temperature')[0].innerHTML = '';
+  getElems('.weather-icon')[0].setAttribute('src', 'resources/placeholder-image.png');
+  getElems('.nearby-areas-section')[0].style.visibility = 'hidden';
   getElems('.loading-section')[0].style.visibility = 'visible';
   ajax('http://api.openweathermap.org/data/2.5/weather?q=' + searchedCity + '&units=metric&appid=' + apikey, function (weatherData) {
-    getElems('#city-field').value = '';
-    getElems('#searched-city').innerHTML = weatherData.name;
-    getElems('#searched-city-temperature').innerHTML = Math.round(weatherData.main.temp) + ' &deg;C';
-    getElems('#weather-icon').setAttribute('src', 'http://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png');
+    getElems('.city-field')[0].value = '';
+    getElems('.searched-city')[0].innerHTML = weatherData.name;
+    getElems('.searched-city-temperature')[0].innerHTML = Math.round(weatherData.main.temp) + ' &deg;C';
+    getElems('.weather-icon')[0].setAttribute('src', 'http://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png');
     getElems('.wind-data')[0].innerHTML = 'Wind ' + weatherData.wind.speed + ' m/s';
     getElems('.humidity-data')[0].innerHTML = 'Humidity ' + weatherData.main.humidity + ' %';
     getElems('.sunrise-data')[0].innerHTML = 'Sunrise ' + timestampToTime(weatherData.sys.sunrise);
     getElems('.sunset-data')[0].innerHTML = 'Sunset ' + timestampToTime(weatherData.sys.sunset);
     ajax('http://api.openweathermap.org/data/2.5/find?lat=' + weatherData.coord.lat + '&lon=' + weatherData.coord.lon + '&cnt=10&units=metric&appid=' + apikey, function (areaData) {
-      getElems('#nearby-areas-data').innerHTML = '';
+      getElems('.nearby-areas-data')[0].innerHTML = '';
       areaData.list
         .filter(function (area) {
           return area.name !== weatherData.name;
@@ -105,30 +105,30 @@ function printData(searchedCity) {
             ]),
           ]);
 
-          getElems('#nearby-areas-data').appendChild(li);
+          getElems('.nearby-areas-data')[0].appendChild(li);
         });
       getElems('.loading-section')[0].style.display = 'none';
-      getElems('#nearby-areas-section').style.visibility = 'visible';
+      getElems('.nearby-areas-section')[0].style.visibility = 'visible';
       addClickListeners();
     }, function (error) {
-      getElems('#searched-city').innerHTML += 'Error loading ares.json (' + error + ')';
+      getElems('.searched-city')[0].innerHTML += 'Error loading ares.json (' + error + ')';
     });
   }, function (error) {
-    getElems('#searched-city').innerHTML = 'Could not fetch data (' + error.message + ')';
-    getElems('#data-section').setAttribute('class', 'error');
+    getElems('.searched-city')[0].innerHTML = 'Could not fetch data (' + error.message + ')';
+    getElems('.data-section')[0].classList.add('error');
   });
 }
 
-getElems('#search-form').addEventListener('submit', function (e) {
-  var searchedCity = getElems('#city-field').value.trim();
+getElems('.search-form')[0].addEventListener('submit', function (e) {
+  var searchedCity = getElems('.city-field')[0].value.trim();
   e.preventDefault();
-  getElems('#data-section').removeAttribute('class');
+  getElems('.data-section')[0].classList.remove('error');
   if (searchedCity) {
-    getElems('#data-section').style.visibility = 'visible';
+    getElems('.data-section')[0].style.visibility = 'visible';
     printData(searchedCity);
   }
 });
 
-getElems('#data-section').addEventListener('click', function () {
+getElems('.data-section')[0].addEventListener('click', function () {
   getElems('.extra-data')[0].classList.toggle('verbose');
 });

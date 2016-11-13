@@ -3,7 +3,7 @@ body {
   font-size: 25px;
 }
 
-#container {
+.container {
   max-width: 500px;
   margin: auto;
 }
@@ -16,11 +16,11 @@ h1 {
 }
 
 /*** Search Section ***/
-#form-section {
+.form-section {
   display: flex;
 }
 
-#search-form {
+.search-form {
   margin-bottom: 15px;
 }
 
@@ -38,7 +38,7 @@ input[type=submit] {
 }
 
 /*** Area Section ***/
-#data-section {
+.data-section {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -47,12 +47,12 @@ input[type=submit] {
   visibility: hidden;
 }
 
-#weather-icon {
+.weather-icon {
   width: 75px;
   border-right: 1px solid black;
 }
 
-#text-data-wrapper {
+.text-data-wrapper {
   padding-left: 10px; 
 }
 
@@ -63,11 +63,11 @@ input[type=submit] {
 
 
 /*** Nearby Areas Section ***/
-#nearby-areas-section {
+.nearby-areas-section {
   visibility: hidden;
 }
 
-#nearby-areas-data {
+.nearby-areas-data {
   padding-left: 0;
 }
 
