@@ -54,7 +54,7 @@ function timestampToTime(timestamp) {
 
 function addClickListeners() {
   var nearbyAreas = getElems('.nearbyArea');
-  Array.prototype.forEach.call(nearbyAreas, function (areaElement) {
+  Array.from(nearbyAreas).forEach(function (areaElement) {
     areaElement.addEventListener('click', function () {
       this.children[2].classList.toggle('verbose');
     });
