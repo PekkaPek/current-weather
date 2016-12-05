@@ -52,11 +52,11 @@ h1 {
   border-right: 1px solid black;
 }
 
-.data-section__text-data-wrapper {
+.data-section__main-wrapper {
   padding-left: 10px; 
 }
 
-.data-section__extra-data {
+.data-section__additionals-wrapper {
   max-height: 0;
   transition: max-height 2s;
 }

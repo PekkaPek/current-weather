@@ -72,10 +72,10 @@ function printData(searchedCity) {
     getElems('.data-section__searched-city')[0].innerHTML = weatherData.name;
     getElems('.data-section__searched-city-temperature')[0].innerHTML = Math.round(weatherData.main.temp) + ' &deg;C';
     getElems('.data-section__weather-icon')[0].setAttribute('src', 'http://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png');
-    getElems('.data-section__wind-data')[0].innerHTML = 'Wind ' + weatherData.wind.speed + ' m/s';
-    getElems('.data-section__humidity-data')[0].innerHTML = 'Humidity ' + weatherData.main.humidity + ' %';
-    getElems('.data-section__sunrise-data')[0].innerHTML = 'Sunrise ' + timestampToTime(weatherData.sys.sunrise);
-    getElems('.data-section__sunset-data')[0].innerHTML = 'Sunset ' + timestampToTime(weatherData.sys.sunset);
+    getElems('.data-section__wind')[0].innerHTML = 'Wind ' + weatherData.wind.speed + ' m/s';
+    getElems('.data-section__humidity')[0].innerHTML = 'Humidity ' + weatherData.main.humidity + ' %';
+    getElems('.data-section__sunrise')[0].innerHTML = 'Sunrise ' + timestampToTime(weatherData.sys.sunrise);
+    getElems('.data-section__sunset')[0].innerHTML = 'Sunset ' + timestampToTime(weatherData.sys.sunset);
     ajax('http://api.openweathermap.org/data/2.5/find?lat=' + weatherData.coord.lat + '&lon=' + weatherData.coord.lon + '&cnt=10&units=metric&appid=' + apikey, function (areaData) {
       getElems('.nearby-areas-section__nearby-areas-data')[0].innerHTML = '';
       areaData.list
@@ -130,5 +130,5 @@ getElems('.search-form')[0].addEventListener('submit', function (e) {
 });
 
 getElems('.data-section')[0].addEventListener('click', function () {
-  getElems('.data-section__extra-data')[0].classList.toggle('verbose');
+  getElems('.data-section__additionals-wrapper')[0].classList.toggle('verbose');
 });
