@@ -49,7 +49,9 @@ function createElem(type, attributes, children) {
 
 function timestampToTime(timestamp) {
   var date = new Date(timestamp * 1000);
-  return date.getHours() + ':' + date.getMinutes();
+  var minutes = ('0' + date.getMinutes()).substr(-2);
+  var hours = ('0' + date.getHours()).substr(-2);
+  return hours + ':' + minutes;
 }
 
 function addClickListeners() {
