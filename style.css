@@ -47,16 +47,16 @@ h1 {
   visibility: hidden;
 }
 
-.weather-icon {
+.data-section__weather-icon {
   width: 75px;
   border-right: 1px solid black;
 }
 
-.text-data-wrapper {
+.data-section__text-data-wrapper {
   padding-left: 10px; 
 }
 
-.extra-data {
+.data-section__extra-data {
   max-height: 0;
   transition: max-height 2s;
 }
