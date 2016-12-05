@@ -56,7 +56,7 @@ function addClickListeners() {
   var nearbyAreas = getElems('.nearby-areas-section__nearby-area');
   Array.from(nearbyAreas).forEach(function (areaElement) {
     areaElement.addEventListener('click', function () {
-      this.children[2].classList.toggle('verbose');
+      this.children[2].classList.toggle('nearby-areas-section__additionals-wrapper--show');
     });
   });
 }
@@ -130,5 +130,5 @@ getElems('.search-form')[0].addEventListener('submit', function (e) {
 });
 
 getElems('.data-section')[0].addEventListener('click', function () {
-  getElems('.data-section__additionals-wrapper')[0].classList.toggle('verbose');
+  getElems('.data-section__additionals-wrapper')[0].classList.toggle('data-section__additionals-wrapper--show');
 });

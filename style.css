@@ -61,6 +61,9 @@ h1 {
   transition: max-height 2s;
 }
 
+.data-section__additionals-wrapper--show {
+  max-height: 136px;
+}
 
 /*** Nearby Areas Section ***/
 .nearby-areas-section {
@@ -94,12 +97,10 @@ h1 {
   transition: max-height 2s;
 }
 
-.error {
-  background: MistyRose;
+.nearby-areas-section__additionals-wrapper--show {
+  max-height: 55px;
 }
 
-/*** Common to Several Sections ***/
-
-.verbose {
-  max-height: 240px;
+.error {
+  background: MistyRose;
 }
