@@ -58,7 +58,7 @@ h1 {
 
 .data-section__additionals-wrapper {
   max-height: 0;
-  transition: max-height 2s;
+  transition: max-height 0.7s;
 }
 
 .data-section__additionals-wrapper--show {
@@ -94,7 +94,7 @@ h1 {
 
 .nearby-areas-section__additionals-wrapper {
   max-height: 0;
-  transition: max-height 2s;
+  transition: max-height 0.5s;
 }
 
 .nearby-areas-section__additionals-wrapper--show {
