@@ -24,13 +24,13 @@ h1 {
   margin-bottom: 15px;
 }
 
-input[type=text] {
+.form-section__city-field {
   font-size: 25px;
   flex: 1;
   min-width: 0;
 }
 
-input[type=submit] {
+.form-section__submit-button {
   font-size: 25px;
   color: white;
   background-color: cornflowerblue;

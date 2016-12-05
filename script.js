@@ -68,7 +68,7 @@ function printData(searchedCity) {
   getElems('.nearby-areas-section')[0].style.visibility = 'hidden';
   getElems('.loading-section')[0].style.visibility = 'visible';
   ajax('http://api.openweathermap.org/data/2.5/weather?q=' + searchedCity + '&units=metric&appid=' + apikey, function (weatherData) {
-    getElems('.city-field')[0].value = '';
+    getElems('.form-section__city-field')[0].value = '';
     getElems('.searched-city')[0].innerHTML = weatherData.name;
     getElems('.searched-city-temperature')[0].innerHTML = Math.round(weatherData.main.temp) + ' &deg;C';
     getElems('.weather-icon')[0].setAttribute('src', 'http://openweathermap.org/img/w/' + weatherData.weather[0].icon + '.png');
@@ -120,7 +120,7 @@ function printData(searchedCity) {
 }
 
 getElems('.search-form')[0].addEventListener('submit', function (e) {
-  var searchedCity = getElems('.city-field')[0].value.trim();
+  var searchedCity = getElems('.form-section__city-field')[0].value.trim();
   e.preventDefault();
   getElems('.data-section')[0].classList.remove('error');
   if (searchedCity) {
