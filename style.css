@@ -67,7 +67,7 @@ h1 {
   visibility: hidden;
 }
 
-.nearby-areas-section__nearby-areas-data {
+.nearby-areas-section__list {
   padding-left: 0;
 }
 
@@ -84,12 +84,12 @@ h1 {
   border-right: 1px solid black;
 }
 
-.nearby-areas-section__nearby-area-data {
+.nearby-areas-section__area {
   padding-left: 10px;
   width: 70%;
 }
 
-.nearby-areas-section__nearby-area-extra {
+.nearby-areas-section__additionals-wrapper {
   max-height: 0;
   transition: max-height 2s;
 }
