@@ -67,11 +67,11 @@ h1 {
   visibility: hidden;
 }
 
-.nearby-areas-data {
+.nearby-areas-section__nearby-areas-data {
   padding-left: 0;
 }
 
-.nearbyArea {
+.nearby-areas-section__nearby-area {
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
@@ -80,16 +80,16 @@ h1 {
   font-size: 20px;
 }
 
-.smallIcon {
+.nearby-areas-section__weather-icon {
   border-right: 1px solid black;
 }
 
-.nearbyAreaData {
+.nearby-areas-section__nearby-area-data {
   padding-left: 10px;
   width: 70%;
 }
 
-.nearby-area-extra {
+.nearby-areas-section__nearby-area-extra {
   max-height: 0;
   transition: max-height 2s;
 }
