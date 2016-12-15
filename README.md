@@ -1,5 +1,5 @@
 # Current Weather
-Shows current weather for any searched city.
+Shows current weather for any searched city. The application is currently optimized only for phone screens.
 
 ## Set up
 * Clone this repository
