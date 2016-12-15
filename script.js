@@ -84,7 +84,7 @@ function printData(searchedCity) {
       getElems('.data-section__humidity')[0].innerHTML = 'Humidity ' + weatherData.main.humidity + ' %';
       getElems('.data-section__sunrise')[0].innerHTML = 'Sunrise ' + timestampToTime(weatherData.sys.sunrise);
       getElems('.data-section__sunset')[0].innerHTML = 'Sunset ' + timestampToTime(weatherData.sys.sunset);
-      getElems('.data-section')[0].style.display = 'block';
+      getElems('.data-section')[0].style.display = 'flex';
       getElems('.error-section')[0].style.display = 'none';
       ajax('http://api.openweathermap.org/data/2.5/find?lat=' + weatherData.coord.lat + '&lon=' + weatherData.coord.lon + '&cnt=10&units=metric&appid=' + apikey, function (areaData) {
         if (!areaData) {
