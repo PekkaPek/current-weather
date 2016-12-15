@@ -11,16 +11,17 @@ function getElems(target) {
 
 function ajax(endPoint, callback, errorCallback) {
   var req = new XMLHttpRequest();
+  req.responseType = 'json';
   if (typeof callback !== 'function') {
     throw new Error('Callback provided is not a function');
   }
   req.addEventListener('readystatechange', function () {
     if (req.readyState === XMLHttpRequest.DONE) {
       if (req.status === 200) {
-        callback(JSON.parse(req.responseText));
+        callback(req.response);
       } else if (req.status >= 400 && req.status <= 599) {
         if (typeof errorCallback === 'function') {
-          errorCallback(JSON.parse(req.responseText));
+          errorCallback(req.response);
         }
       }
     }
