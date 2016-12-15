@@ -83,39 +83,43 @@ function printData(searchedCity) {
       getElems('.data-section__sunrise')[0].innerHTML = 'Sunrise ' + timestampToTime(weatherData.sys.sunrise);
       getElems('.data-section__sunset')[0].innerHTML = 'Sunset ' + timestampToTime(weatherData.sys.sunset);
       ajax('http://api.openweathermap.org/data/2.5/find?lat=' + weatherData.coord.lat + '&lon=' + weatherData.coord.lon + '&cnt=10&units=metric&appid=' + apikey, function (areaData) {
-        getElems('.nearby-areas-section__list')[0].innerHTML = '';
-        areaData.list
-          .filter(function (area) {
-            return area.name !== weatherData.name;
-          })
-          .forEach(function (area) {
-            var li = createElem('li', {
-              class: 'nearby-areas-section__nearby-area',
-            }, [
-              createElem('img', {
-                class: 'nearby-areas-section__weather-icon',
-                src: 'http://openweathermap.org/img/w/' + area.weather[0].icon + '.png',
-                alt: 'Weather icon symbolizing ' + area.weather[0].description,
-              }),
-              createElem('div', {
-                class: 'nearby-areas-section__area',
+        if (!areaData) {
+          getElems('.data-section__searched-city')[0].innerHTML += 'Error fetching nearby areas data from API';
+        } else {
+          getElems('.nearby-areas-section__list')[0].innerHTML = '';
+          areaData.list
+            .filter(function (area) {
+              return area.name !== weatherData.name;
+            })
+            .forEach(function (area) {
+              var li = createElem('li', {
+                class: 'nearby-areas-section__nearby-area',
               }, [
-                createElem('div', null, area.name),
-                createElem('div', null, Math.round(area.main.temp) + ' °C'),
-              ]),
-              createElem('div', {
-                class: 'nearby-areas-section__additionals-wrapper',
-              }, [
-                createElem('div', null, 'Wind ' + area.wind.speed + ' m/s'),
-                createElem('div', null, 'Humidity ' + area.main.humidity + ' %'),
-              ]),
-            ]);
+                createElem('img', {
+                  class: 'nearby-areas-section__weather-icon',
+                  src: 'http://openweathermap.org/img/w/' + area.weather[0].icon + '.png',
+                  alt: 'Weather icon symbolizing ' + area.weather[0].description,
+                }),
+                createElem('div', {
+                  class: 'nearby-areas-section__area',
+                }, [
+                  createElem('div', null, area.name),
+                  createElem('div', null, Math.round(area.main.temp) + ' °C'),
+                ]),
+                createElem('div', {
+                  class: 'nearby-areas-section__additionals-wrapper',
+                }, [
+                  createElem('div', null, 'Wind ' + area.wind.speed + ' m/s'),
+                  createElem('div', null, 'Humidity ' + area.main.humidity + ' %'),
+                ]),
+              ]);
 
-            getElems('.nearby-areas-section__list')[0].appendChild(li);
-          });
-        getElems('.nearby-areas-section__loading-text')[0].style.display = 'none';
-        getElems('.nearby-areas-section')[0].style.visibility = 'visible';
-        addClickListeners();
+              getElems('.nearby-areas-section__list')[0].appendChild(li);
+            });
+          getElems('.nearby-areas-section__loading-text')[0].style.display = 'none';
+          getElems('.nearby-areas-section')[0].style.visibility = 'visible';
+          addClickListeners();
+        }
       }, function (error) {
         getElems('.data-section__searched-city')[0].innerHTML += 'Error loading ares.json (' + error + ')';
       });
