@@ -67,7 +67,7 @@ h1 {
 
 /*** Nearby Areas Section ***/
 .nearby-areas-section {
-  visibility: hidden;
+  display: none;
 }
 
 .nearby-areas-section__list {

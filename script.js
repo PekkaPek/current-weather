@@ -123,7 +123,7 @@ function printData(searchedCity) {
               getElems('.nearby-areas-section__list')[0].appendChild(li);
             });
           getElems('.nearby-areas-section__loading-text')[0].style.display = 'none';
-          getElems('.nearby-areas-section')[0].style.visibility = 'visible';
+          getElems('.nearby-areas-section')[0].style.display = 'block';
           getElems('.error-section')[0].style.display = 'none';
           addClickListeners();
         }
