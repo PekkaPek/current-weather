@@ -132,8 +132,9 @@ function printData(searchedCity) {
       });
     }
   }, function (error) {
-    getElems('.data-section__searched-city')[0].innerHTML = 'Could not fetch data (' + error.message + ')';
-    getElems('.data-section')[0].classList.add('error');
+    getElems('.error-section')[0].innerHTML = 'API Error (' + error.message + ')';
+    getElems('.error-section')[0].style.display = 'block';
+    getElems('.data-section')[0].style.display = 'none';
   });
 }
 
