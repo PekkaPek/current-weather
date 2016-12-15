@@ -128,7 +128,9 @@ function printData(searchedCity) {
           addClickListeners();
         }
       }, function (error) {
-        getElems('.data-section__searched-city')[0].innerHTML += 'Error loading ares.json (' + error + ')';
+        getElems('.error-section')[0].innerHTML = 'API Error in Nearby Areas (' + error.message + ')';
+        getElems('.error-section')[0].style.display = 'block';
+        getElems('.nearby-areas-section')[0].style.display = 'none';
       });
     }
   }, function (error) {
