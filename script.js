@@ -68,11 +68,13 @@ function printData(searchedCity) {
   getElems('.data-section__searched-city')[0].innerHTML = 'Loading';
   getElems('.data-section__searched-city-temperature')[0].innerHTML = '';
   getElems('.data-section__weather-icon')[0].setAttribute('src', 'resources/placeholder-image.png');
-  getElems('.nearby-areas-section')[0].style.visibility = 'hidden';
+  getElems('.nearby-areas-section')[0].style.display = 'none';
   getElems('.nearby-areas-section__loading-text')[0].style.visibility = 'visible';
   ajax('http://api.openweathermap.org/data/2.5/weather?q=' + searchedCity + '&units=metric&appid=' + apikey, function (weatherData) {
     if (!weatherData) {
-      getElems('.data-section__searched-city')[0].innerHTML += 'Error fetching data from API';
+      getElems('.error-section')[0].innerHTML = 'Error fetching data';
+      getElems('.error-section')[0].style.display = 'block';
+      getElems('.data-section')[0].style.display = 'none';
     } else {
       getElems('.form-section__city-field')[0].value = '';
       getElems('.data-section__searched-city')[0].innerHTML = weatherData.name;
@@ -82,9 +84,13 @@ function printData(searchedCity) {
       getElems('.data-section__humidity')[0].innerHTML = 'Humidity ' + weatherData.main.humidity + ' %';
       getElems('.data-section__sunrise')[0].innerHTML = 'Sunrise ' + timestampToTime(weatherData.sys.sunrise);
       getElems('.data-section__sunset')[0].innerHTML = 'Sunset ' + timestampToTime(weatherData.sys.sunset);
+      getElems('.data-section')[0].style.display = 'block';
+      getElems('.error-section')[0].style.display = 'none';
       ajax('http://api.openweathermap.org/data/2.5/find?lat=' + weatherData.coord.lat + '&lon=' + weatherData.coord.lon + '&cnt=10&units=metric&appid=' + apikey, function (areaData) {
         if (!areaData) {
-          getElems('.data-section__searched-city')[0].innerHTML += 'Error fetching nearby areas data from API';
+          getElems('.error-section')[0].innerHTML = 'Error fetching nearby areas data';
+          getElems('.error-section')[0].style.display = 'block';
+          getElems('.nearby-areas-section')[0].style.display = 'none';
         } else {
           getElems('.nearby-areas-section__list')[0].innerHTML = '';
           areaData.list
@@ -118,6 +124,7 @@ function printData(searchedCity) {
             });
           getElems('.nearby-areas-section__loading-text')[0].style.display = 'none';
           getElems('.nearby-areas-section')[0].style.visibility = 'visible';
+          getElems('.error-section')[0].style.display = 'none';
           addClickListeners();
         }
       }, function (error) {
