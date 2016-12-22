@@ -68,6 +68,7 @@ function printData(searchedCity) {
   getElems('.data-section__searched-city')[0].innerHTML = 'Loading';
   getElems('.data-section__searched-city-temperature')[0].innerHTML = '';
   getElems('.data-section__weather-icon')[0].setAttribute('src', 'resources/placeholder-image.png');
+  getElems('.data-section')[0].style.display = 'flex';
   getElems('.nearby-areas-loading-section')[0].style.display = 'none';
   getElems('.nearby-areas-section')[0].style.display = 'none';
   getElems('.error-section')[0].style.display = 'none';
@@ -147,7 +148,6 @@ getElems('.search-form')[0].addEventListener('submit', function (e) {
   var searchedCity = getElems('.form-section__city-field')[0].value.trim();
   e.preventDefault();
   if (searchedCity) {
-    getElems('.data-section')[0].style.display = 'flex';
     printData(searchedCity);
   }
 });
