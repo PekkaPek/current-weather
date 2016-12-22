@@ -104,6 +104,11 @@ h1 {
   background: MistyRose;
 }
 
+/*** Loading Nearby Areas Section ***/
+.nearby-areas-loading-section {
+  display: none;
+}
+
 /*** Error Section ***/
 .error-section {
   display: none;
