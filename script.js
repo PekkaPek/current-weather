@@ -92,7 +92,7 @@ function printData(searchedCity) {
         if (!areaData) {
           getElems('.error-section')[0].innerHTML = 'Error fetching nearby areas data';
           getElems('.error-section')[0].style.display = 'block';
-          getElems('.nearby-areas-section')[0].style.display = 'none';
+          getElems('.nearby-areas-loading-section')[0].style.display = 'none';
         } else {
           getElems('.nearby-areas-section__list')[0].innerHTML = '';
           areaData.list
@@ -132,7 +132,6 @@ function printData(searchedCity) {
         getElems('.error-section')[0].innerHTML = 'API Error in Nearby Areas (' + error.message + ')';
         getElems('.error-section')[0].style.display = 'block';
         getElems('.nearby-areas-loading-section')[0].style.display = 'none';
-        getElems('.nearby-areas-section')[0].style.display = 'none';
       });
     }
   }, function (error) {
