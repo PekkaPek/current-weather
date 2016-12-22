@@ -68,6 +68,7 @@ function printData(searchedCity) {
   getElems('.data-section__searched-city')[0].innerHTML = 'Loading';
   getElems('.data-section__searched-city-temperature')[0].innerHTML = '';
   getElems('.data-section__weather-icon')[0].setAttribute('src', 'resources/placeholder-image.png');
+  getElems('.nearby-areas-loading-section')[0].style.display = 'none';
   getElems('.nearby-areas-section')[0].style.display = 'none';
   getElems('.error-section')[0].style.display = 'none';
   getElems('.nearby-areas-section__loading-text')[0].style.visibility = 'visible';
@@ -131,6 +132,7 @@ function printData(searchedCity) {
       }, function (error) {
         getElems('.error-section')[0].innerHTML = 'API Error in Nearby Areas (' + error.message + ')';
         getElems('.error-section')[0].style.display = 'block';
+        getElems('.nearby-areas-loading-section')[0].style.display = 'none';
         getElems('.nearby-areas-section')[0].style.display = 'none';
       });
     }
