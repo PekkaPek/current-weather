@@ -69,6 +69,7 @@ function printData(searchedCity) {
   getElems('.data-section__searched-city-temperature')[0].innerHTML = '';
   getElems('.data-section__weather-icon')[0].setAttribute('src', 'resources/placeholder-image.png');
   getElems('.nearby-areas-section')[0].style.display = 'none';
+  getElems('.error-section')[0].style.display = 'none';
   getElems('.nearby-areas-section__loading-text')[0].style.visibility = 'visible';
   ajax('http://api.openweathermap.org/data/2.5/weather?q=' + searchedCity + '&units=metric&appid=' + apikey, function (weatherData) {
     if (!weatherData) {
@@ -86,7 +87,6 @@ function printData(searchedCity) {
       getElems('.data-section__sunset')[0].innerHTML = 'Sunset ' + timestampToTime(weatherData.sys.sunset);
       getElems('.data-section')[0].style.display = 'flex';
       getElems('.nearby-areas-loading-section')[0].style.display = 'block';
-      getElems('.error-section')[0].style.display = 'none';
       ajax('http://api.openweathermap.org/data/2.5/find?lat=' + weatherData.coord.lat + '&lon=' + weatherData.coord.lon + '&cnt=10&units=metric&appid=' + apikey, function (areaData) {
         if (!areaData) {
           getElems('.error-section')[0].innerHTML = 'Error fetching nearby areas data';
@@ -126,7 +126,6 @@ function printData(searchedCity) {
           getElems('.nearby-areas-section__loading-text')[0].style.display = 'none';
           getElems('.nearby-areas-loading-section')[0].style.display = 'none';
           getElems('.nearby-areas-section')[0].style.display = 'block';
-          getElems('.error-section')[0].style.display = 'none';
           addClickListeners();
         }
       }, function (error) {
