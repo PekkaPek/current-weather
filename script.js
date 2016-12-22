@@ -72,7 +72,6 @@ function printData(searchedCity) {
   getElems('.nearby-areas-loading-section')[0].style.display = 'none';
   getElems('.nearby-areas-section')[0].style.display = 'none';
   getElems('.error-section')[0].style.display = 'none';
-  getElems('.nearby-areas-section__loading-text')[0].style.visibility = 'visible';
   ajax('http://api.openweathermap.org/data/2.5/weather?q=' + searchedCity + '&units=metric&appid=' + apikey, function (weatherData) {
     if (!weatherData) {
       getElems('.error-section')[0].innerHTML = 'Error fetching data';
@@ -125,7 +124,6 @@ function printData(searchedCity) {
 
               getElems('.nearby-areas-section__list')[0].appendChild(li);
             });
-          getElems('.nearby-areas-section__loading-text')[0].style.display = 'none';
           getElems('.nearby-areas-loading-section')[0].style.display = 'none';
           getElems('.nearby-areas-section')[0].style.display = 'block';
           addClickListeners();
