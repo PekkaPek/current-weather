@@ -144,7 +144,7 @@ getElems('.search-form')[0].addEventListener('submit', function (e) {
   var searchedCity = getElems('.form-section__city-field')[0].value.trim();
   e.preventDefault();
   if (searchedCity) {
-    getElems('.data-section')[0].style.visibility = 'visible';
+    getElems('.data-section')[0].style.display = 'flex';
     printData(searchedCity);
   }
 });
