@@ -143,7 +143,6 @@ function printData(searchedCity) {
 getElems('.search-form')[0].addEventListener('submit', function (e) {
   var searchedCity = getElems('.form-section__city-field')[0].value.trim();
   e.preventDefault();
-  getElems('.data-section')[0].classList.remove('error');
   if (searchedCity) {
     getElems('.data-section')[0].style.visibility = 'visible';
     printData(searchedCity);
